@@ -9,16 +9,6 @@ function RigoDiaper() {
 			.then(data => setData(data));
 	});
 
-	// const [x, setX] = useState(3)
-	//     .then(data => setX(4))
-
-	// let y = 2
-	//     y = 1
-
-	// const myHuggies= () => {
-	//     useEffect(()
-	//     )
-	// }
 	return (
 		<>
 			<h1> BABY </h1>
@@ -26,10 +16,24 @@ function RigoDiaper() {
 				{!data
 					? "loading"
 					: data.map((item, index) => {
-							return <li key={index}>{item}</li>;
+							return (
+								<li key={index}>
+									<div className="card">
+										<div className="row">
+											<div className="col-2">
+												{/* <img src="" alt="..." /> */}
+												here image
+											</div>
+											<div className="col">{item}</div>
+											<div className="col-2">icons</div>
+										</div>
+									</div>
+								</li>
+							);
 					  })}
 			</ul>
 		</>
 	);
 }
+
 export default RigoDiaper;
