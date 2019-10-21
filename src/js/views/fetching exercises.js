@@ -17,8 +17,8 @@ function RigoDiaper() {
 					? "loading"
 					: data.map((item, index) => {
 							return (
-								<li key={index}>
-									<div className="card">
+								<li key={index} className="m-2">
+									<div className="card p-2">
 										<div className="row">
 											<div className="col-2">
 												{/* <img src="" alt="..." /> */}
@@ -35,7 +35,10 @@ function RigoDiaper() {
 												<br />
 												{item.created_at}
 											</div>
-											<div className="col-2">icons</div>
+											<div className="col-2">
+												<i className="fas fa-user-edit" />
+												<i className="fas fa-trash-alt ml-2" />
+											</div>
 										</div>
 									</div>
 								</li>
