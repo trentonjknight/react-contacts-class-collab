@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function RigoDiaper() {
 	const [data, setData] = useState([]);
@@ -11,7 +12,12 @@ function RigoDiaper() {
 
 	return (
 		<>
-			<h1> BABY </h1>
+			<h1> Contact List </h1>
+			<div className="d-flex justify-content-end">
+				<Link to="/addnew">
+					<button className=" btn btn-large btn-success">Add New Contact</button>
+				</Link>
+			</div>
 			<ul>
 				{!data
 					? "loading"

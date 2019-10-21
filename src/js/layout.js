@@ -10,6 +10,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import RigoDiaper from "./views/fetching exercises";
+import AddNew from "./views/AddNew";
 
 //create your first component
 export const Layout = () => {
@@ -25,6 +26,7 @@ export const Layout = () => {
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/demo" component={Demo} />
+						<Route path="/addnew" component={AddNew} />
 						<Route path="/rigo" component={RigoDiaper} />
 						<Route path="/single/:theid" component={Single} />
 						<Route render={() => <h1>Not found!</h1>} />
