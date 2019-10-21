@@ -4,7 +4,7 @@ function RigoDiaper() {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-		fetch("https://assets.breatheco.de/apis/fake/contact/agenda")
+		fetch("https://assets.breatheco.de/apis/fake/contact/agenda/harry_potter")
 			.then(resp => resp.json())
 			.then(data => setData(data));
 	});
@@ -24,7 +24,17 @@ function RigoDiaper() {
 												{/* <img src="" alt="..." /> */}
 												here image
 											</div>
-											<div className="col">{item}</div>
+											<div className="col">
+												{item.full_name}
+												<br />
+												{item.email}
+												<br />
+												{item.phone}
+												<br />
+												{item.address}
+												<br />
+												{item.created_at}
+											</div>
 											<div className="col-2">icons</div>
 										</div>
 									</div>
