@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
+
 import { Link } from "react-router-dom";
 
+var contactObj = {};
+
 const EditInfo = () => {
+	const fullName = useRef(null);
+	const email = useRef(null);
+	const phone = useRef(null);
+	const address = useRef(null);
+
+	// `current` points to the mounted text input element
+
+	const GetInfo = () => {
+		contactObj = {
+			fullname: fullName.current.value,
+			email: email.current.value,
+			phone: phone.current.value,
+			address: address.current.value
+		};
+	};
+
 	return (
 		<>
 			<div className="mx-auto">
@@ -9,21 +28,23 @@ const EditInfo = () => {
 					<h1>Edit Contact Info</h1>
 					<div className="form-group">
 						<label>Full Name</label>
-						<input type="text" className="form-control" placeholder="Enter Name" />
+						<input type="text" className="form-control" placeholder="Enter Name" ref={fullName} />
 					</div>
 					<div className="form-group">
 						<label>Email</label>
-						<input type="text" className="form-control" placeholder="Enter Email" />
+						<input type="text" className="form-control" placeholder="Enter Email" ref={email} />
 					</div>
 					<div className="form-group">
 						<label>Phone</label>
-						<input type="text" className="form-control" placeholder="Enter Phone #" />
+						<input type="text" className="form-control" placeholder="Enter Phone #" ref={phone} />
 					</div>
 					<div className="form-group">
 						<label>Address</label>
-						<input type="text" className="form-control" placeholder="Enter Address" />
+						<input type="text" className="form-control" placeholder="Enter Address" ref={address} />
 					</div>
-					<button className="btn btn-large btn-primary">Save Contact</button>
+					<button className="btn btn-large btn-primary" onClick={GetInfo}>
+						Save Contact
+					</button>
 					<Link to="/rigo">back to contacts</Link>
 				</form>
 			</div>
