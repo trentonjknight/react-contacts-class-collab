@@ -6,7 +6,7 @@ function RigoDiaper() {
 	const [modalDisplay, setModalDisplay] = useState("d-none");
 
 	useEffect(() => {
-		fetch("https://assets.breatheco.de/apis/fake/contact/agenda/harry_potter")
+		fetch("https://assets.breatheco.de/apis/fake/contact/agenda/Cohort-V")
 			.then(resp => resp.json())
 			.then(data => setData(data));
 	});

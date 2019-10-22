@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -42,8 +42,15 @@ const EditInfo = () => {
 						<label>Address</label>
 						<input type="text" className="form-control" placeholder="Enter Address" ref={address} />
 					</div>
-					<button className="btn btn-large btn-primary" onClick={actions.GetInfo(fullname.current.value,email.current.value,phone.current.value,address.current.value)}>
-						Save Contact
+					<button
+						className="btn btn-large btn-primary"
+						onClick={actions.GetInfo(
+							fullname.current.value,
+							email.current.value,
+							phone.current.value,
+							address.current.value
+						)}>
+						Save Edited Information
 					</button>
 					<Link to="/rigo">back to contacts</Link>
 				</form>

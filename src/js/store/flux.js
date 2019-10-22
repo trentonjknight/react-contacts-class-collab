@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-            contactObj: {},
+			test: "working",
+			contactObj: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -16,9 +17,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-            GetInfo: (fullname,email,phone,address) => {
-
-            },
+			GetInfo: (fullname, email, phone, address) => {
+				const newInfo = {
+					fullname: fullName.current.value,
+					email: email.current.value,
+					phone: phone.current.value,
+					address: address.current.value
+				};
+                const storage = getStore()
+                storage.contactObj.push(newInfo)
+                setStore(storage)
+			},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
