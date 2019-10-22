@@ -17,8 +17,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
             GetInfo: (fullname,email,phone,address) => {
-
-            },
+				const newInfo = {
+                    fullname: fullname.current.value,
+                    email: email.current.value,
+                    phone: phone.current.value,
+                    address: address.current.value
+                };
+               const storage = getStore()
+               storage.contactObj.push(newInfo)
+               setStore(storage)
+			},
+			saveInfo:() => {
+				fetch('https://assets.breatheco.de/apis/fake/contact/', {
+					method : 'PUT',
+					body : JSON.stringify(contactObj),
+					headers:{
+						'Content-Type':'application/json'
+						}
+					}).then(res => res.json())
+					.then(response => console.log('Success:', JSON.stringify(response)))
+					.catch(error => console.error('Error:', error))},
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
