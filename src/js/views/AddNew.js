@@ -8,15 +8,7 @@ function AddNew() {
 				<form>
 					<h1>Add a New Contact</h1>
 					<div className="form-group">
-						<label>Full Name</label>
-						<input type="text" className="form-control" placeholder="Enter Name" />
-					</div>
-					<div className="form-group">
-						<label>Email</label>
-						<input type="text" className="form-control" placeholder="Enter Email" />
-					</div>
-					<div className="form-group">
-						<label>Phone</label>
+			<label>Phone</label>
 						<input type="text" className="form-control" placeholder="Enter Phone #" />
 					</div>
 					<div className="form-group">
@@ -32,3 +24,4 @@ function AddNew() {
 }
 
 export default AddNew;
+acitions.

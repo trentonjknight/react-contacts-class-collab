@@ -42,7 +42,7 @@ const EditInfo = () => {
 						<label>Address</label>
 						<input type="text" className="form-control" placeholder="Enter Address" ref={address} />
 					</div>
-					<button className="btn btn-large btn-primary" onClick={GetInfo}>
+					<button className="btn btn-large btn-primary" onClick={actions.GetInfo(fullname.current.value,email.current.value,phone.current.value,address.current.value)}>
 						Save Contact
 					</button>
 					<Link to="/rigo">back to contacts</Link>

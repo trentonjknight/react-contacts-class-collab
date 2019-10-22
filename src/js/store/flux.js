@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+            contactObj: {},
 			demo: [
 				{
 					title: "FIRST",
@@ -15,6 +16,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+            GetInfo: (fullname,email,phone,address) => {
+
+            },
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
