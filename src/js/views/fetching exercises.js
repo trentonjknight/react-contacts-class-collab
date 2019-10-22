@@ -51,7 +51,9 @@ function RigoDiaper() {
 												{item.created_at}
 											</div>
 											<div className="col-2">
-												<i className="fas fa-user-edit" style={{ cursor: "pointer" }} />
+												<Link to="/EditInfo">
+													<i className="fas fa-user-edit" style={{ cursor: "pointer" }} />
+												</Link>
 												<i
 													onClick={trash}
 													style={{ cursor: "pointer" }}

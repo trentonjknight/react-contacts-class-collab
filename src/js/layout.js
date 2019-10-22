@@ -11,6 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import RigoDiaper from "./views/fetching exercises";
 import AddNew from "./views/AddNew";
+import EditInfo from "./views/EditInfo";
 
 //create your first component
 export const Layout = () => {
@@ -27,6 +28,7 @@ export const Layout = () => {
 						<Route exact path="/" component={Home} />
 						<Route path="/demo" component={Demo} />
 						<Route path="/addnew" component={AddNew} />
+						<Route path="/EditInfo" component={EditInfo} />
 						<Route path="/rigo" component={RigoDiaper} />
 						<Route path="/single/:theid" component={Single} />
 						<Route render={() => <h1>Not found!</h1>} />
