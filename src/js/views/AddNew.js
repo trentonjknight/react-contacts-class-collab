@@ -4,17 +4,29 @@ import { Link } from "react-router-dom";
 function AddNew() {
 	return (
 		<>
-			<form>
-				<div className="form-group row">
+			<div className="mx-auto">
+				<form>
 					<h1>Add a New Contact</h1>
-					<input label="Full Name" type="text" placeholder="Enter Name" />
-					<input label="Email" type="text" placeholder="Enter Email" />
-					<input label="Phone" type="text" placeholder="Enter Phone #" />
-					<input label="Address" type="text" placeholder="Enter Address" />
+					<div className="form-group">
+						<label>Full Name</label>
+						<input type="text" className="form-control" placeholder="Enter Name" />
+					</div>
+					<div className="form-group">
+						<label>Email</label>
+						<input type="text" className="form-control" placeholder="Enter Email" />
+					</div>
+					<div className="form-group">
+						<label>Phone</label>
+						<input type="text" className="form-control" placeholder="Enter Phone #" />
+					</div>
+					<div className="form-group">
+						<label>Address</label>
+						<input type="text" className="form-control" placeholder="Enter Address" />
+					</div>
 					<button className="btn btn-large btn-primary">Save Contact</button>
 					<Link to="/rigo">back to contacts</Link>
-				</div>
-			</form>
+				</form>
+			</div>
 		</>
 	);
 }
