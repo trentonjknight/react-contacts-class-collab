@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function EditInfo() {
+const EditInfo = () => {
 	return (
 		<>
 			<div className="mx-auto">
@@ -29,6 +29,6 @@ function EditInfo() {
 			</div>
 		</>
 	);
-}
+};
 
 export default EditInfo;
