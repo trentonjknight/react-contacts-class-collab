@@ -1,25 +1,13 @@
 import React, { useRef, useContext } from "react";
-
 import { Link } from "react-router-dom";
-
-var contactObj = {};
+import { Context } from "../store/appContext";
 
 const EditInfo = () => {
-	const fullName = useRef(null);
+	const fullname = useRef(null);
 	const email = useRef(null);
 	const phone = useRef(null);
 	const address = useRef(null);
-
-	// `current` points to the mounted text input element
-
-	const GetInfo = () => {
-		contactObj = {
-			fullname: fullName.current.value,
-			email: email.current.value,
-			phone: phone.current.value,
-			address: address.current.value
-		};
-	};
+	const { store, actions } = useContext(Context);
 
 	return (
 		<>
@@ -28,7 +16,13 @@ const EditInfo = () => {
 					<h1>Edit Contact Info</h1>
 					<div className="form-group">
 						<label>Full Name</label>
-						<input type="text" className="form-control" placeholder="Enter Name" ref={fullName} />
+						<input
+							type="text"
+							value={store.contactObj[0].fullname}
+							className="form-control"
+							placeholder="Enter Name"
+							ref={fullname}
+						/>
 					</div>
 					<div className="form-group">
 						<label>Email</label>
@@ -42,16 +36,7 @@ const EditInfo = () => {
 						<label>Address</label>
 						<input type="text" className="form-control" placeholder="Enter Address" ref={address} />
 					</div>
-					<button
-						className="btn btn-large btn-primary"
-						onClick={actions.GetInfo(
-							fullname.current.value,
-							email.current.value,
-							phone.current.value,
-							address.current.value
-						)}>
-						Save Edited Information
-					</button>
+					<button className="btn btn-large btn-primary">Save Edited Information</button>
 					<Link to="/rigo">back to contacts</Link>
 				</form>
 			</div>
