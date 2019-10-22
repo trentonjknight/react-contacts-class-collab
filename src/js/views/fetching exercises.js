@@ -3,12 +3,21 @@ import { Link } from "react-router-dom";
 
 function RigoDiaper() {
 	const [data, setData] = useState([]);
+	const [modalDisplay, setModalDisplay] = useState("d-none");
 
 	useEffect(() => {
 		fetch("https://assets.breatheco.de/apis/fake/contact/agenda/harry_potter")
 			.then(resp => resp.json())
 			.then(data => setData(data));
 	});
+
+	const trash = () => {
+		if (modalDisplay === "invisible") {
+			setModalDisplay("visible");
+		} else {
+			setModalDisplay("invisible");
+		}
+	};
 
 	return (
 		<>
@@ -42,8 +51,12 @@ function RigoDiaper() {
 												{item.created_at}
 											</div>
 											<div className="col-2">
-												<i className="fas fa-user-edit" />
-												<i className="fas fa-trash-alt ml-2" />
+												<i className="fas fa-user-edit" style={{ cursor: "pointer" }} />
+												<i
+													onClick={trash}
+													style={{ cursor: "pointer" }}
+													className="fas fa-trash-alt ml-2"
+												/>
 											</div>
 										</div>
 									</div>
@@ -51,6 +64,15 @@ function RigoDiaper() {
 							);
 					  })}
 			</ul>
+
+			<div className={["modal", modalDisplay].join(" ")}>
+				<div className="modal-content">
+					<span onClick={trash} className="close">
+						&times;
+					</span>
+					<p>Some text in the Modal..</p>
+				</div>
+			</div>
 		</>
 	);
 }
