@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { Context } from "../store/appContext";
 function RigoDiaper() {
 	const [data, setData] = useState([]);
 	const [modalDisplay, setModalDisplay] = useState("d-none");
+	const { store, actions } = useContext(Context);
 
-	useEffect(() => {
-		fetch("https://assets.breatheco.de/apis/fake/contact/agenda/Cohort-V")
-			.then(resp => resp.json())
-			.then(data => setData(data));
-	});
+	const ShowData = () => {
+		console.log(data);
+	};
 
 	const trash = () => {
 		if (modalDisplay === "invisible") {
@@ -28,11 +27,11 @@ function RigoDiaper() {
 				</Link>
 			</div>
 			<ul>
-				{!data
+				{!store.contacts
 					? "loading"
-					: data.map((item, index) => {
+					: store.contacts.map((item, index) => {
 							return (
-								<li key={index} className="m-2">
+								<li key={index} className="m-2" onClick={ShowData}>
 									<div className="card p-2">
 										<div className="row">
 											<div className="col-2">

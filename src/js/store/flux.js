@@ -4,7 +4,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			test: "working",
 			contactObj: [
 				{
-					fullname: "trent"
+					fullname: "",
+					phone: "",
+					email: "",
+					address: ""
 				}
 			],
 			demo: [
@@ -32,16 +35,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				storage.contactObj.push(newInfo);
 				setStore(storage);
 			},
-            saveInfo:() => {
-            fetch('https://assets.breatheco.de/apis/fake/contact/', {
-                method : 'PUT',
-                body : JSON.stringify(contactObj),
-                headers:{
-                    'Content-Type':'application/json'
-                    }
-                }).then(res => res.json())
-                .then(response => console.log('Success:', JSON.stringify(response)))
-                .catch(error => console.error('Error:', error))},
+			saveInfo: () => {
+				fetch("https://assets.breatheco.de/apis/fake/contact/", {
+					method: "PUT",
+					body: JSON.stringify(contactObj),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(res => res.json())
+					.then(response => console.log("Success:", JSON.stringify(response)))
+					.catch(error => console.error("Error:", error));
+			},
 
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
