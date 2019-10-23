@@ -31,7 +31,9 @@ function AddNew() {
 						<input type="text" className="form-control" placeholder="Enter Address" ref={address} />
 						{store.test}
 					</div>
-					<button className="btn btn-large btn-primary">Save New Contact</button>
+					<button className="btn btn-large btn-primary" onClick={() => saveInfo()}>
+						Save New Contact
+					</button>
 					<Link to="/rigo">back to contacts</Link>
 				</form>
 			</div>

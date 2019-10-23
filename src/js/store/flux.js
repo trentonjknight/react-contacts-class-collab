@@ -1,7 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			test: "working",
 			contactObj: [
 				{
 					fullname: "",
@@ -24,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-			GetInfo: (fullname, email, phone, address) => {
+			saveInfo: (fullname, email, phone, address) => {
 				const newInfo = {
 					fullname: fullname.current.value,
 					email: email.current.value,
@@ -35,16 +34,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				storage.contactObj.push(newInfo);
 				setStore(storage);
 			},
-			saveInfo: () => {
-				fetch("https://assets.breatheco.de/apis/fake/contact/", {
+			editInfo: (param1, param2, props) => {
+				fetch("https://assets.breatheco.de/apis/fake/contact/" + param2, {
 					method: "PUT",
-					body: JSON.stringify(contacts),
+					body: JSON.stringify(param1),
 					headers: {
 						"Content-Type": "application/json"
 					}
 				})
 					.then(res => res.json())
-					.then(response => console.log("Success:", JSON.stringify(response)))
+					.then(response => {
+						console.log("Success:", JSON.stringify(response));
+						props.history.push("/rigo");
+					})
 					.catch(error => console.error("Error:", error));
 			},
 
