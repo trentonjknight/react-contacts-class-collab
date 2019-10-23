@@ -2,7 +2,7 @@ import React, { useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-const EditInfo = () => {
+const EditInfo = props => {
 	const fullname = useRef(null);
 	const email = useRef(null);
 	const phone = useRef(null);
@@ -18,7 +18,7 @@ const EditInfo = () => {
 						<label>Full Name</label>
 						<input
 							type="text"
-							value={store.contactObj[0].fullname}
+							value={store.contactObj[props.match.params.id].fullname}
 							className="form-control"
 							placeholder="Enter Name"
 							ref={fullname}
