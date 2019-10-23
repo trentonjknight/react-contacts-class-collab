@@ -38,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			saveInfo: () => {
 				fetch("https://assets.breatheco.de/apis/fake/contact/", {
 					method: "PUT",
-					body: JSON.stringify(contactObj),
+					body: JSON.stringify(contacts),
 					headers: {
 						"Content-Type": "application/json"
 					}
