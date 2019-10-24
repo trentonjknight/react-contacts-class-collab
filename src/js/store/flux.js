@@ -33,13 +33,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const storage = getStore();
 				storage.contactObj.push(newInfo);
 				setStore(storage);
+				fetch("https://assets.breatheco.de/apis/fake/contact/", {
+					method: "POST",
+					body: JSON.stringify({
+						agenda_slug: "Cohort-V",
+						full_name: fullname,
+						email: email,
+						phone: phone,
+						address: address
+					}),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				})
+					.then(res => res.json())
+					.then(response => {
+						console.log("Success:", JSON.stringify(response));
+						props.history.push("/rigo");
+					})
+					.catch(error => console.error("Error:", error));
 			},
 			delete: id => {
 				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
 					method: "DELETE"
 				})
 					.then(res => res.json())
-					.then(response => console.log(response))
+					.then(response => alert("Contact Deleted"))
 					.catch(error => console.error("Error:", error));
 			},
 			editInfo: (param1, param2, props) => {

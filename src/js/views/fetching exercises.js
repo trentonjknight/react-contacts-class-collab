@@ -83,7 +83,13 @@ function RigoDiaper() {
 						<button type="button" className="btn btn-danger" data-dismiss="modal">
 							Cancel
 						</button>
-						<button type="button" className="btn btn-success" onClick={() => actions.delete(deId)}>
+						<button
+							type="button"
+							className="btn btn-success"
+							onClick={() => {
+								actions.delete(deId);
+								setModalDisplay("invisible");
+							}}>
 							Delete
 						</button>
 					</div>
