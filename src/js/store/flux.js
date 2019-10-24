@@ -34,14 +34,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				storage.contactObj.push(newInfo);
 				setStore(storage);
 			},
-            delete: id => {
-                fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
-                    method: "DELETE"
-                })
-                    .then(res => res.json())
-                    .then(response => console.log(response))
-                    .catch(error => console.error("Error:", error));
-            },
+			delete: id => {
+				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
+					method: "DELETE"
+				})
+					.then(res => res.json())
+					.then(response => console.log(response))
+					.catch(error => console.error("Error:", error));
+			},
 			editInfo: (param1, param2, props) => {
 				fetch("https://assets.breatheco.de/apis/fake/contact/" + param2, {
 					method: "PUT",
