@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -23,32 +25,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
-			saveInfo: (fullname, email, phone, address) => {
-				const newInfo = {
-					fullname: fullname.current.value,
-					email: email.current.value,
-					phone: phone.current.value,
-					address: address.current.value
-				};
-				const storage = getStore();
-				storage.contactObj.push(newInfo);
-				setStore(storage);
+			test: () => {
+				const store = getStore();
+				console.log("store", store.contactObj);
+			},
+			saveInfo: (objContact, props) => {
+				// console.log(getStore());
 				fetch("https://assets.breatheco.de/apis/fake/contact/", {
 					method: "POST",
-					body: JSON.stringify({
-						agenda_slug: "Cohort-V",
-						full_name: fullname,
-						email: email,
-						phone: phone,
-						address: address
-					}),
+					body: JSON.stringify(objContact),
 					headers: {
 						"Content-Type": "application/json"
 					}
 				})
 					.then(res => res.json())
-					.then(response => {
-						console.log("Success:", JSON.stringify(response));
+					.then(newContacts => {
+						alert("New Contact Added");
 						props.history.push("/rigo");
 					})
 					.catch(error => console.error("Error:", error));
@@ -58,10 +50,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: "DELETE"
 				})
 					.then(res => res.json())
-					.then(response => alert("Contact Deleted"))
+					.then(response => console.log(response))
 					.catch(error => console.error("Error:", error));
 			},
-			editInfo: (param1, param2, props) => {
+			editInfo: (param1, param2, history) => {
 				fetch("https://assets.breatheco.de/apis/fake/contact/" + param2, {
 					method: "PUT",
 					body: JSON.stringify(param1),
@@ -71,8 +63,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(res => res.json())
 					.then(response => {
-						console.log("Success:", JSON.stringify(response));
-						props.history.push("/rigo");
+						alert("Success:", JSON.stringify(response));
+						history.push("/rigo");
 					})
 					.catch(error => console.error("Error:", error));
 			},
@@ -103,5 +95,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		}
 	};
 };
+
+// getState.propTypes = {
+// 	history: PropTypes.objects
+// };
 
 export default getState;
